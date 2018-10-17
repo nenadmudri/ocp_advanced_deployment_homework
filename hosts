@@ -21,7 +21,7 @@ oreg_url=registry.access.redhat.com/openshift3/ose-${component}:${version}
 openshift_examples_modify_imagestreams=true
 
 containerized=false
-openshift_deployment_type= 'openshift-enterprise'
+openshift_deployment_type=openshift-enterprise
 openshift_release="3.10.34"
 
 # Node Groups
@@ -87,7 +87,7 @@ openshift_master_htpasswd_file=/root/htpasswd.openshift
 ###########################################################################
 
 # default project node selector
- osm_default_node_selector='client=common'
+# osm_default_node_selector='client=common'
 
 # selector for hosted infra resources
 # openshift_hosted_infra_selector="env=infra"
