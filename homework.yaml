@@ -1,5 +1,6 @@
 ---
 - name: Prepare host file
+  gather_facts: no
   hosts: all
   tasks:
     - name: Change GUID variable with actual value
