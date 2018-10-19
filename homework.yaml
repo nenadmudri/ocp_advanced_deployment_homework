@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Change GUID variable with actual value
-      shell: echo "Copy a new hosts file to /etc/ansible/hosts"; cp -a /root/ocp_advanced_deployment_homework/hosts /etc/ansible/hosts; echo "Set the current GUID to generate the inventory"; GUID=`hostname|awk -F. '{print $2}'`; sed -i "s/GUID/$GUID/g" /etc/ansible/hosts
+      shell: export GUID=`hostname | cut -d"." -f2`; echo "Copy a new hosts file to /etc/ansible/hosts"; cp -a /root/ocp_advanced_deployment_homework/hosts /etc/ansible/hosts; echo "Set the current GUID to generate the inventory"; GUID=`hostname|awk -F. '{print $2}'`; sed -i "s/GUID/$GUID/g" /etc/ansible/hosts
 
 - name: Prepare GUID environment variable across all hosts
   hosts: all
