@@ -1,20 +1,11 @@
 ---
 - name: Prepare GUID environment variable across all hosts
-  gather_facts: no
   hosts: all
   tasks:
     - name: All GUID env variable
       shell: export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc
 
-- name: Prepare host file
-  gather_facts: no
-  hosts: all
-  tasks:
-    - name: Change GUID variable with actual value
-      shell: export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc;  echo "Copy a new hosts file to /etc/ansible/hosts"; cp -a /root/ocp_advanced_deployment_homework/hosts /etc/ansible/hosts; echo "Set the current GUID to generate the inventory"; GUID=`hostname|awk -F. '{print $2}'`; sed -i "s/GUID/$GUID/g" /etc/ansible/hosts
-
 - name: Script setup
-  gather_facts: no
   hosts: localhost
   tasks: 
     - name: "Script setup permision set.."
